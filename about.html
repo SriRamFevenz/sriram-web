@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="/dist/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+    <div id="preloader">
+        <img src="./img/spinner.svg" alt="">
+    </div>
+    <div class="main">
+        <nav>
+            <a href="./index.html">
+                <div class="logo">
+                    <b id="up">.</b><span class="highlight-1">S</span>ri<span
+                        class="highlight-2">F</span>evenz<b id="down">.</b>
+                    </div>
+                </a>
+            <ul class="ulItems hide">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./project.html">Project</a></li>
+                <li><a href="./skills.html">Skills</a></li>
+                <li><a href="./about.html" class="active">About</a></li>
+            </ul>
+            <div class="links hide">
+                <a href="https://www.twitter.com/__s__r__i__r__a__m___/" target="_blank">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=100092394272619" target="_blank">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+                <a href="https://github.com/SriRamFevenz/" target="_blank">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.instagram.com/__s__r__i__r__a__m___/" target="_blank">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+            <div class="menubar">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </nav>
+        <hr>
+        <footer>
+            <div class="links">
+                <a href="https://www.twitter.com/__s__r__i__r__a__m___/" target="_blank">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=100092394272619" target="_blank">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+                <a href="https://github.com/SriRamFevenz/" target="_blank">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.instagram.com/__s__r__i__r__a__m___/" target="_blank">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+            <div class="copyright">
+                CopyRight Sriram &copy; 2023
+            </div>
+        </footer>
+    </div>
+    <script src="js/script.js"></script>
+    <script src="js/jquery-3.7.1.js"></script>
+    <script>
+        $(window).on('load',function () {
+            $('#preloader').fadeOut(1000);
+            $('.main').fadeIn(1000);
+        })
+    </script>
+</body>
+
+</html>
