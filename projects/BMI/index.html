@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI</title>
+    <style>
+        * {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        #preloader {
+            width: 100vw;
+            height: 304vh;
+            background-color: #000;
+            position: absolute;
+            z-index: 1000;
+        }
+
+        #preloader img {
+            position: fixed;
+            top: 0%;
+            left: 50%;
+            transform: translate(-50%, 50%);
+        }
+
+        .container {
+            margin: 0 auto;
+            max-width: 700px;
+            border-radius: 10px;
+            padding: 1rem 2rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form h1 {
+            margin-bottom: 1rem;
+        }
+
+        .form input,
+        .form label {
+            width: 100%;
+            margin: 1rem 0;
+            height: 50px;
+            font-size: 1rem;
+        }
+
+        .form input {
+            padding: 1rem;
+            border: 1px solid #ccc;
+            outline: 0;
+            border-radius: 5px;
+        }
+
+        .form button {
+            width: 100%;
+            border: 1px solid #ccc;
+            height: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            border: 1px solid #0f50ca;
+            border-radius: 5px;
+            color: #0f50ca;
+            background-color: transparent;
+            transition: all .3s ease-in-out;
+            margin: 1rem 0;
+        }
+
+        h4 {
+            font-weight: 400;
+            font-size: 20px;
+            margin: 1rem 0;
+        }
+
+        .form button:hover {
+            background-color: #0f50ca;
+            color: #fff;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        a {
+            padding: 10px 20px;
+            border: 1px solid #0f50ca;
+            border-radius: 5px;
+            color: #0f50ca;
+            background-color: transparent;
+            transition: all .3s ease-in-out;
+        }
+
+        a:hover {
+            background-color: #0f50ca;
+            color: #fff;
+        }
+
+        @media (max-width:767px) {
+            .container {
+                padding: .5rem 1rem;
+            }
+
+            .form h1 {
+                margin-bottom: .7rem;
+
+            }
+
+            .form input,
+            .form label {
+                width: 100%;
+                margin: .5rem 0;
+                height: 50px;
+                font-size: 1rem;
+            }
+
+            .form input {
+                padding: 1rem;
+                border: 1px solid #ccc;
+                outline: 0;
+                border-radius: 5px;
+            }
+
+            .form button {
+                width: 100%;
+                border: 1px solid #ccc;
+                height: 50px;
+                cursor: pointer;
+                font-size: 1rem;
+                font-weight: 500;
+                border: 1px solid #0f50ca;
+                border-radius: 5px;
+                color: #0f50ca;
+                background-color: transparent;
+                transition: all .3s ease-in-out;
+                margin: 1rem 0;
+            }
+
+            h4 {
+                font-weight: 400;
+                font-size: 20px;
+                margin: 1rem 0;
+            }
+
+            .form button:hover {
+                background-color: #0f50ca;
+                color: #fff;
+            }
+
+            footer {
+                position: absolute;
+                bottom: 1rem;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            a {
+                padding: 10px 20px;
+                border: 1px solid #0f50ca;
+                border-radius: 5px;
+                color: #0f50ca;
+                background-color: transparent;
+                transition: all .3s ease-in-out;
+            }
+
+            a:hover {
+                background-color: #0f50ca;
+                color: #fff;
+                font-size: 20px;
+
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="preloader">
+        <img src="/img/spinner.svg" alt="">
+    </div>
+    <div class="container">
+        <div class="form">
+            <h1>Body Mass Index (BMI) Calculator</h1>
+            <div class="form-group">
+                <label for="">Height in (CM):</label>
+                <input type="number" placeholder="cm" id="height">
+            </div>
+            <div class="form-group">
+                <label for="">Weight in (KG):</label>
+                <input type="number" placeholder="kg" id="weight">
+            </div>
+            <div class="form-group">
+                <button id="btn">Calculate</button>
+            </div>
+            <div class="result">
+                <h4 class="info-text">Weight Condition: <span id="weight-condition"></span></h4>
+                <input disabled type="text" class="input" id="bmi-result">
+            </div>
+
+        </div>
+    </div>
+    <footer>
+        <a href="/index.html">goback home</a>
+    </footer>
+    <script src="./js/jquery-3.7.1.js"></script>
+    <script>
+        $(window).on('load', function () {
+            $('#preloader').fadeOut(1000);
+            $('.container').fadeIn(1000);
+        })
+    </script>
+    <script>
+        const btnEl = document.getElementById("btn");
+        const bmiInputEl = document.getElementById("bmi-result");
+        const weightConditionEl = document.getElementById("weight-condition");
+
+        function calculateBMI() {
+            const heightValue = document.getElementById("height").value / 100;
+            const weightValue = document.getElementById("weight").value;
+
+            const bmiValue = weightValue / (heightValue * heightValue);
+
+            bmiInputEl.value = bmiValue;
+
+            if (bmiValue < 18.5) {
+                weightConditionEl.innerText = "Under weight";
+            } else if (bmiValue >= 18.5 && bmiValue <= 24.9) {
+                weightConditionEl.innerText = "Normal weight";
+            } else if (bmiValue >= 25 && bmiValue <= 29.9) {
+                weightConditionEl.innerText = "Overweight";
+            } else if (bmiValue >= 30) {
+                weightConditionEl.innerText = "Obesity";
+            }
+
+        }
+
+        btnEl.addEventListener("click", calculateBMI);
+
+    </script>
+
+</body>
+
+</html>
